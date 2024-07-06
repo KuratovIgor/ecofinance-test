@@ -1,4 +1,4 @@
-EcoFinance Test Task
+# EcoFinance Test Task
 
 ## Before starting
 - Create .env file
