@@ -3,17 +3,17 @@ export type LoginUserType = {
     password: string
 }
 
-export type PersonalInfo = {
+export type PersonalInfoType = {
     title: string
     name: string
     age: number
     telegram: string
     email: string
-    experience: PersonalInfoExperience[]
+    experience: PersonalInfoExperienceType[]
     stack: string[]
 }
 
-export type PersonalInfoExperience = {
+export type PersonalInfoExperienceType = {
     title: string
     dates: {
         from: string
@@ -21,4 +21,11 @@ export type PersonalInfoExperience = {
     }
     jobTitle: string
     description: string
+}
+
+export type UserType = {
+    avatar: string
+    fullName: string
+    email: string
+    location: string
 }
