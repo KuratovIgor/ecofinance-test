@@ -19,7 +19,12 @@
 
         <h2>
             Стэк:
-            <span v-for="item of personalInfo.stack">{{ item }},&nbsp</span>
+            <span
+                v-for="(item, index) of personalInfo.stack"
+                :key="index"
+            >
+                {{ item }},&nbsp
+            </span>
         </h2>
 
         <h2>Опыт работы:</h2>
@@ -32,9 +37,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { PersonalInfo } from '@/types/user.type'
+import type { PersonalInfoType } from '@/types/user.type'
 
-const personalInfo: PersonalInfo = {
+const personalInfo: PersonalInfoType = {
     title: 'Frontend Разработчик',
     name: 'Куратов Игорь Александрович',
     age: 21,

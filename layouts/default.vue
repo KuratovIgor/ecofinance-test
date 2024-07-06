@@ -6,7 +6,7 @@
 
 <style lang="scss" scoped>
 .page-wrapper {
-    display: flex;
-    justify-content: center
+    max-width: 800px;
+    margin: 0 auto;   
 }
 </style>

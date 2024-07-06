@@ -1,5 +1,5 @@
 <template>
-    <UCard class="experience-card">
+    <u-card class="experience-card">
         <template #header>
             <div class="experience-card__title">{{ experience.jobTitle }}</div>
             <div>{{ experience.title }}</div>
@@ -7,20 +7,21 @@
         </template>
 
         <div v-html="experience.description"></div>
-    </UCard>
+    </u-card>
 </template>
 
 <script lang="ts" setup>
-import type { PersonalInfoExperience } from '@/types/user.type'
+import type { PersonalInfoExperienceType } from '@/types/user.type'
 
 defineProps<{
-    experience: PersonalInfoExperience
+    experience: PersonalInfoExperienceType
 }>()
 </script>
 
 <style lang="scss" scoped>
 .experience-card {
     margin-bottom: 20px;
+    width: 100%;
     max-width: 800px;
     font-size: 14px;
 
