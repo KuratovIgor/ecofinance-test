@@ -9,6 +9,7 @@
 ```bash
 docker-compose up -d
 ```
+Open app in browser on 3000 port
 
 ## Start via NPM
 
