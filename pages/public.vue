@@ -2,7 +2,7 @@
     <div class="public-page">
         <h1>{{ personalInfo.name }}, {{ personalInfo.age }}</h1>
 
-        <div class="public-page__info">{{ personalInfo.title }}</div>
+        <h2>{{ personalInfo.title }}</h2>
 
         <div class="public-page__contacts">
             <div class="public-page__contacts-title">Контакты:</div>
@@ -17,12 +17,12 @@
             </div>
         </div>
 
-        <div class="public-page__info">
+        <h2>
             Стэк:
             <span v-for="item of personalInfo.stack">{{ item }},&nbsp</span>
-        </div>
+        </h2>
 
-        <div class="public-page__info">Опыт работы:</div>
+        <h2>Опыт работы:</h2>
         <experience-card
             v-for="(experienceItem, index) in personalInfo.experience"
             :key="index"
@@ -90,26 +90,10 @@ const personalInfo: PersonalInfo = {
 
 <style lang="scss" scoped>
 .public-page {
-    &__info {
-        margin-bottom: 20px;
-        font-size: 20px;
-    }
-
     &__contacts {
         margin-bottom: 20px;
 
         &-title {
-            font-size: 20px;
-        }
-    }
-
-    &__experience {
-        margin-bottom: 20px;
-        max-width: 800px;
-        font-size: 14px;
-
-        &-title {
-            margin-bottom: 10px;
             font-size: 20px;
         }
     }

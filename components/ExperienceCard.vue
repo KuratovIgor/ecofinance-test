@@ -1,9 +1,9 @@
 <template>
-    <UCard class="public-page__experience">
+    <UCard class="experience-card">
         <template #header>
-            <div class="public-page__experience-title">{{ experience.jobTitle }}</div>
+            <div class="experience-card__title">{{ experience.jobTitle }}</div>
             <div>{{ experience.title }}</div>
-            <div>{{ experience.dates.from }} - {{ experience.dates.to }}</div>
+            <div class="experience-card__info">{{ experience.dates.from }} - {{ experience.dates.to }}</div>
         </template>
 
         <div v-html="experience.description"></div>
@@ -17,3 +17,20 @@ defineProps<{
     experience: PersonalInfoExperience
 }>()
 </script>
+
+<style lang="scss" scoped>
+.experience-card {
+    margin-bottom: 20px;
+    max-width: 800px;
+    font-size: 14px;
+
+    &__title {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    &__info {
+        color: $color-info;
+    }
+}
+</style>
