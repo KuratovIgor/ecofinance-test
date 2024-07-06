@@ -15,7 +15,11 @@ export const useUsersStore = defineStore('users', () => {
                 query: { page },
             })
     
-            usersData.value.push(...response)
+            if (page === 1) {
+                usersData.value = response
+            } else {
+                usersData.value.push(...response)
+            }
         } catch {
             //
         } finally {
