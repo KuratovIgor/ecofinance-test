@@ -5,7 +5,7 @@
                 <h1 class="text-center">Login</h1>
             </template>
 
-            <u-form :validate="formValidate" :state="formState">
+            <u-form :validate="formValidate" :state="formState" @submit="handleUserLogin">
                 <u-form-group class="mb-5" label="Email" :name="FormField.email">
                     <u-input v-model="formState.email" placeholder="email" />
                 </u-form-group>
@@ -22,8 +22,10 @@
 
 <script lang="ts" setup>
 import type { FormError } from '#ui/types'
-import FormValidate from '@/utils/validate';
 import type { LoginUserType } from '@/types/user.type'
+import { Cookie, Page } from '@/constants/common'
+import FormValidate from '@/utils/validate'
+import CookieUtil from '@/utils/cookie'
 
 enum FormField {
     email = 'email',
@@ -42,6 +44,12 @@ const formValidate = (state: LoginUserType): FormError[] => {
         email: [state.email, { required: true }],
         password: [state.password, { required: true }],
     })
+}
+
+const handleUserLogin = (): void => {
+    CookieUtil.setCookie(Cookie.isAuthorized, '1')
+
+    router.push(Page.protected)
 }
 </script>
 

@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { UserType } from '@/types/user.type';
+import type { UserType } from '@/types/user.type'
 
 defineProps<{
     user: UserType
