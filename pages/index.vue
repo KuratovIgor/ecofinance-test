@@ -12,7 +12,7 @@
 
                 <u-form-group class="mb-10" label="Password" :name="FormField.password">
                     <UInput v-model="formState.password" placeholder="password" />
-                </-form-group>
+                </u-form-group>
 
                 <u-button type="submit" block>Login</u-button>
             </u-form>

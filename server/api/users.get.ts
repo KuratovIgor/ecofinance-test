@@ -22,8 +22,7 @@ export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): P
     const { page } = getQuery(event)
 
     try {
-        console.log(page)
-        const response = await $fetch<Response>(`https://randomuser.me/api/?page=${page}&results=6`)
+        const response = await $fetch<Response>(`https://randomuser.me/api/?page=${page || 1}&results=6`)
 
         return response.results.map((result) => ({
             fullName: `${result.name.title} ${result.name.first} ${result.name.last}`,

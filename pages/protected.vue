@@ -13,7 +13,15 @@
             />
         </div>
 
-        <u-button block @click="handleGetMoreUsers">More</u-button>
+        <u-button
+            v-if="isClient"
+            :loading="usersStore.loading"
+            block
+            @click="handleGetMoreUsers"
+        >
+            More
+        </u-button>
+        <div v-else>Wait, more button loading...</div>
     </div>
 </template>
 
@@ -21,6 +29,8 @@
 const page = ref(1)
 
 const usersStore = useUsersStore()
+
+const isClient = computed(() => import.meta.client)
 
 const handleGetMoreUsers = async (): Promise<void> => {
     page.value++
