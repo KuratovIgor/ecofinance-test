@@ -13,4 +13,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    public: {
+      usersApiUrl: process.env.NUXT_USERS_API_URL,
+    },
+  },
 })
