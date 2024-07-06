@@ -1,3 +1,4 @@
+import UsersService from '@/services/users.service'
 import type { UserType } from '@/types/user.type'
 
 export const useUsersStore = defineStore('users', () => {
@@ -11,9 +12,7 @@ export const useUsersStore = defineStore('users', () => {
         try {
             loading.value = true
 
-            const response =  await $fetch<UserType[]>('/api/users', {
-                query: { page },
-            })
+            const response = await UsersService.getUsers(page)
     
             if (page === 1) {
                 usersData.value = response

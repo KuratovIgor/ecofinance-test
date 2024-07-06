@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts" setup>
-import CookieUtil from '@/utils/cookie';
-import { Cookie, Page } from '@/constants/common';
+import CookieUtil from '@/utils/cookie'
+import { Cookie, Page } from '@/constants/common'
 
 definePageMeta({
     middleware: ['is-authorized'],
@@ -35,9 +35,9 @@ definePageMeta({
 
 const router = useRouter()
 
-const page = ref(1)
-
 const usersStore = useUsersStore()
+
+const page = ref(1)
 
 const isClient = computed(() => import.meta.client)
 
