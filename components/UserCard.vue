@@ -1,5 +1,5 @@
 <template>
-    <UCard class="user-card">
+    <u-card class="user-card">
         <template #header>
             <div class="user-card__header">
                 <div class="user-card__name">{{ user.fullName }}</div>
@@ -9,7 +9,7 @@
 
         <div>Email: {{ user.email }}</div>
         <div>City: {{ user.location }}</div>
-    </UCard>
+    </u-card>
 </template>
 
 <script lang="ts" setup>

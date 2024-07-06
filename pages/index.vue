@@ -1,22 +1,22 @@
 <template>
     <div class="login-page">
-        <UCard class="login-page__card">
+        <u-card class="login-page__card">
             <template #header>
                 <h1 class="text-center">Login</h1>
             </template>
 
-            <UForm :validate="formValidate" :state="formState">
-                <UFormGroup class="mb-5" label="Email" :name="FormField.email">
-                    <UInput v-model="formState.email" placeholder="email" />
-                </UFormGroup>
+            <u-form :validate="formValidate" :state="formState">
+                <u-form-group class="mb-5" label="Email" :name="FormField.email">
+                    <u-input v-model="formState.email" placeholder="email" />
+                </u-form-group>
 
-                <UFormGroup class="mb-10" label="Password" :name="FormField.password">
+                <u-form-group class="mb-10" label="Password" :name="FormField.password">
                     <UInput v-model="formState.password" placeholder="password" />
-                </UFormGroup>
+                </-form-group>
 
-                <UButton type="submit" block>Login</UButton>
-            </UForm>
-        </UCard>
+                <u-button type="submit" block>Login</u-button>
+            </u-form>
+        </u-card>
     </div>
 </template>
 

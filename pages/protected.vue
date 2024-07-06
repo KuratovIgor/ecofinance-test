@@ -2,18 +2,18 @@
     <div class="protected-page">
         <div class="protected-page__header">
             <h1>Users</h1>
-            <UButton color="red">Logout</UButton>
+            <u-button color="red">Logout</u-button>
         </div>
 
         <div class="protected-page__cards">
-            <UserCard
+            <user-card
                 v-for="(user, index) of usersStore.users"
                 :key="index"
                 :user="user"
             />
         </div>
 
-        <UButton block @click="handleGetMoreUsers">More</UButton>
+        <u-button block @click="handleGetMoreUsers">More</u-button>
     </div>
 </template>
 
