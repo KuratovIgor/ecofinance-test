@@ -7,3 +7,8 @@ export const Page = {
     public: '/public',
     protected: '/protected',
 }
+
+export const LoadingStatus = {
+    penging: 'pending',
+    success: 'success',
+}

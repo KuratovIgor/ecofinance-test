@@ -5,17 +5,18 @@
             <u-button color="red" @click="handleUserLogout">Logout</u-button>
         </div>
 
-        <div class="protected-page__cards">
+        <div v-if="!errorLoadingText" class="protected-page__cards">
             <user-card
                 v-for="(user, index) of usersStore.users"
                 :key="index"
                 :user="user"
             />
         </div>
+        <div v-else>{{ errorLoadingText }}</div>
 
         <u-button
             v-if="isClient"
-            :loading="usersStore.loading"
+            :loading="isLoading"
             block
             @click="handleUsersLoad"
         >
@@ -26,8 +27,10 @@
 </template>
 
 <script lang="ts" setup>
+import UsersService from '@/services/users.service';
 import CookieUtil from '@/utils/cookie'
-import { Cookie, Page } from '@/constants/common'
+import { Cookie, Page, LoadingStatus } from '@/constants/common'
+import type { UserType } from '@/types/user.type';
 
 definePageMeta({
     middleware: ['is-authorized'],
@@ -39,12 +42,25 @@ const usersStore = useUsersStore()
 
 const page = ref(1)
 
+const { data, error, status, refresh } = await useAsyncData<UserType[]>('users', () => UsersService.getUsers(page.value))
+
+usersStore.setUsers(data.value ?? [])
+
 const isClient = computed(() => import.meta.client)
+const isLoading = computed(() => status.value === LoadingStatus.penging)
+
+const errorLoadingText = computed(() => {
+    if (usersStore.users.length) return ''
+    if (error.value) return 'Error loading users'
+
+    return 'Users list is empty'
+})
 
 const handleUsersLoad = async (): Promise<void> => {
     page.value++
 
-    await usersStore.getUsers(page.value)
+    await refresh()
+    usersStore.addUsers(data.value ?? [])
 }
 
 const handleUserLogout = (): void => {
@@ -52,8 +68,6 @@ const handleUserLogout = (): void => {
 
     router.push(Page.login)
 }
-
-await usersStore.getUsers(page.value)
 </script>
 
 <style lang="scss" scoped>
