@@ -41,7 +41,7 @@ const formState = reactive<LoginUserType>({
 
 const formValidate = (state: LoginUserType): FormError[] => {
     return FormValidate.validate<typeof FormField>({
-        email: [state.email, { required: true }],
+        email: [state.email, { required: true, email: true }],
         password: [state.password, { required: true }],
     })
 }
